@@ -8,7 +8,7 @@ Conexion del front con el backend
 
 export const extraConfig = () => {
   return axios.create({
-    baseURL: "http:localhost:8080/api/v1",
+    baseURL: "http://localhost:8080/api/v1",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
