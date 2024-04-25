@@ -20,7 +20,10 @@ export const FeedContent = () => {
 
   return (
     <>
-      {feedData ? <FeedContentt feedData={feedData} /> : <p>Carregando...</p>}
+      {feedData &&
+        feedData.data.map((feed, index) => (
+          <FeedContentt feedData={feed} key={index} />
+        ))}
     </>
   );
 };
