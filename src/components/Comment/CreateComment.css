@@ -1,0 +1,25 @@
+.content-comment {
+  background-color: aqua;
+}
+
+.button-comentario {
+  padding: 7px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background-color: rgb(243, 237, 237);
+  margin-left: 10px;
+}
+
+.button-2 {
+  height: 35px;
+  padding: 7px;
+  padding-left: 10px;
+  background: rgb(238, 174, 202);
+  background: radial-gradient(
+    circle,
+    rgba(238, 174, 202, 1) 0%,
+    rgba(148, 233, 202, 0.6587009803921569) 100%
+  );
+  border-radius: 90px;
+  border: 1px solid transparent;
+}
