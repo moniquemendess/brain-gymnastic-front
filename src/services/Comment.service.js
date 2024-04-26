@@ -34,9 +34,13 @@ export const getAllComments = async () => {
 export const getByIdComment = async (id) => {
   const ApiGeneral = extraConfig();
 
-  return ApiGeneral.get(`/comment/idComments/${id}`)
-    .then((res) => res)
-    .catch((error) => error);
+  try {
+    const response = await ApiGeneral.get(`/comment/idComments/${id}`);
+    return response.data; // Retorna apenas os dados da resposta
+  } catch (error) {
+    console.error("Erro ao obter comentários:", error);
+    throw error; // Rejeita o erro para ser tratado externamente
+  }
 };
 
 /***************************************************************************************************** */

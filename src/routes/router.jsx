@@ -1,6 +1,6 @@
 import App from "../App";
 import { createBrowserRouter } from "react-router-dom";
-import { FeedContent } from "../pages/FeedLogic/FeedContent";
+import { FeedContent } from "../pages/FeedLogic/FeedContentPage";
 
 export const router = createBrowserRouter([
   {

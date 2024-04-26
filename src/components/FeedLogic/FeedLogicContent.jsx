@@ -1,4 +1,4 @@
-// import { Link } from "react-router-dom";
+import "./FeedLogicContent.css";
 
 export const FeedContentt = ({ feedData }) => {
   if (!feedData) {

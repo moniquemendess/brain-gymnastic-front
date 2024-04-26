@@ -1,3 +1,2 @@
-export * from "./FeedLogic/FeedLogic";
-export * from "./FeedLogic/FeedLogicPage";
-export * from "./FeedLogic/FeedContent";
+export * from "./FeedLogic/FeedContentPage";
+export * from "./FeedLogic/FeedContentPage.css";
