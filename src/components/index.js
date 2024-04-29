@@ -4,3 +4,5 @@ export * from "./Comment/CreateComment.css";
 export * from "./FeedLogic/FeedLogicContent.css";
 export * from "./Login/LoginForm";
 export * from "./Login/LoginForm.css";
+export * from "./Register/RegisterForm";
+export * from "./Register/RegisterForm.css";
