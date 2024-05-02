@@ -5,10 +5,10 @@ import { extraConfig } from "./servicesApiGeneral.config";
 
 /***************************************************************************************************** */
 
-export const RegisterUser = async (FormData) => {
+export const RegisterUser = async (formData) => {
   const ApiGeneral = extraConfig();
 
-  return ApiGeneral.post(`/users/register`, FormData, {
+  return ApiGeneral.post(`/users/register`, formData, {
     headers: { "Content-Type": "multipart/form-data" },
   })
     .then((res) => res)
@@ -17,11 +17,11 @@ export const RegisterUser = async (FormData) => {
 
 /***************************************************************************************************** */
 
-export const login = async (FormData) => {
+export const login = async (formData) => {
   const ApiGeneral = extraConfig();
 
-  return ApiGeneral.post(`/users/login`, FormData, {
-    headers: { "Content-Type": "multipart/form-data" },
+  return ApiGeneral.post(`/users/login`, formData, {
+    headers: { "Content-Type": "application/json" },
   })
     .then((res) => res)
     .catch((error) => error);
