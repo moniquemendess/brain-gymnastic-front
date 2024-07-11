@@ -1,7 +1,8 @@
 import App from "../App";
 import { createBrowserRouter } from "react-router-dom";
-import { FeedContent } from "../pages/FeedLogic/FeedContentPage";
+
 import { LoginForm, RegisterForm } from "../components";
+import { FeedContentPage } from "../pages";
 
 export const router = createBrowserRouter([
   {
@@ -18,7 +19,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/content",
-        element: <FeedContent />,
+        element: <FeedContentPage />,
       },
     ],
   },
