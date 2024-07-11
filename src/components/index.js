@@ -7,3 +7,4 @@ export * from "./Login/LoginForm.css";
 export * from "./Register/RegisterForm";
 export * from "./Register/RegisterForm.css";
 export * from "./Upload/UploadFile";
+export * from "./FeedLogic/FeedFigure";

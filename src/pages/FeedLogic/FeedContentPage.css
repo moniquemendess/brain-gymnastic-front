@@ -1,5 +1,7 @@
 .content-feed {
   margin: 0;
   padding: 0;
-  background-color: #e2d7f4; /* Substitua #f0f0f0 pela cor desejada */
+}
+.Start-a-post input {
+  width: 200px;
 }

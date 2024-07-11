@@ -1,11 +1,11 @@
 import { createContext, useContext, useMemo, useState } from "react";
+import { bridgeData, login, logout } from "../utils";
 
 const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(() => {
     const user = localStorage.getItem("user");
-
     return user ? JSON.parse(user) : null;
   });
 
@@ -21,37 +21,6 @@ export const AuthContextProvider = ({ children }) => {
       },
     },
   });
-
-  //! -----------------------------------------------------------------------
-  //? -------- PUENTE PARA CUANDO TENGAMOS PROBLEMAS DE ASYNCRONIA ----------
-  //! -----------------------------------------------------------------------
-
-  const bridgeData = (state) => {
-    const data = localStorage.getItem("data");
-    const dataJson = JSON.parse(data);
-    console.log(dataJson);
-    switch (state) {
-      case "ALLUSER":
-        setAllUser(dataJson);
-        localStorage.removeItem("data");
-
-        break;
-
-      default:
-        break;
-    }
-  };
-
-  const login = (data) => {
-    localStorage.setItem("user", data);
-    const parseUser = JSON.parse(data);
-    setUser(parseUser);
-  };
-
-  const logout = () => {
-    localStorage.removeItem("user");
-    setUser(null);
-  };
 
   const value = useMemo(
     () => ({
