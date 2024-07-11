@@ -1,3 +1,5 @@
+import "./UploadFile.css";
+
 import { useEffect } from "react";
 
 export const Uploadfile = () => {
@@ -80,9 +82,7 @@ export const Uploadfile = () => {
           <div id="notimage" className="hidden">
             Please select an image
           </div>
-          <span id="file-upload-btn" className="btn btn-primary">
-            Select a file
-          </span>
+          <span id="file-upload-btn" className="btn btn-primary"></span>
         </div>
         <div id="response" className="hidden">
           <div id="messages"></div>

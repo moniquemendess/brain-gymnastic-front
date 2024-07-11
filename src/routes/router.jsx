@@ -3,6 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 
 import { LoginForm, RegisterForm } from "../components";
 import { FeedContentPage } from "../pages";
+import { CreateFeed } from "../pages/FeedLogic/CreateFeed";
 
 export const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ export const router = createBrowserRouter([
       {
         path: "/content",
         element: <FeedContentPage />,
+      },
+      {
+        path: "/createfeed",
+        element: <CreateFeed />,
       },
     ],
   },
