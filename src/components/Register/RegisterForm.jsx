@@ -2,8 +2,11 @@ import { useState } from "react";
 import { FaUser, FaLock } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { RegisterUser } from "../../services/User.service";
+import { useNavigate } from "react-router-dom";
 
 export const RegisterForm = () => {
+  const navigate = useNavigate();
+  const [okRegister, setOkRegister] = useState(false);
   const [formData, setFormData] = useState({
     userName: "",
     email: "",
@@ -16,24 +19,24 @@ export const RegisterForm = () => {
       ...formData,
       [e.target.name]: e.target.value,
     });
-    console.log("Form Data Atualizado:", formData);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      console.log(
-        "Dados do formulário que estão sendo enviados aqui:",
-        formData
-      );
       const response = await RegisterUser(formData);
       console.log(response); // Aqui você pode tratar a resposta do servidor
+      if (response.status === 200 || response.status === 201) {
+        setOkRegister(true);
+        navigate("/contentPage");
+      } else {
+        console.error("Erro ao registrar o usuário:", response.data);
+      }
     } catch (error) {
       console.error("Ocorreu um erro ao tentar registrar o usuário:", error);
     }
   };
-
   return (
     <div className="wrapper">
       <form onSubmit={handleSubmit}>

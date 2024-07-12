@@ -1,4 +1,4 @@
-import "./Feed.css";
+import "./CreateFeed.css";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Navigate } from "react-router";
@@ -20,7 +20,7 @@ export const CreateFeed = () => {
     const inputfile = document.getElementById("file-upload").files;
     const customFormData = {
       ...formData,
-      image: inputFile.length ? inputFile[0] : undefined,
+      image: inputfile.length ? inputfile[0] : undefined,
       owner: user,
     };
     setSend(true);
@@ -35,7 +35,7 @@ export const CreateFeed = () => {
 
   // estados de navegación
   if (okForum) {
-    return <Navigate to="/feedPage" />;
+    return <Navigate to="/contentPage" />;
   }
   return (
     <div className="feed_container">

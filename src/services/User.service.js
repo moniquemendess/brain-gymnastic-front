@@ -9,7 +9,7 @@ export const RegisterUser = async (formData) => {
   const ApiGeneral = extraConfig();
 
   return ApiGeneral.post(`/users/register`, formData, {
-    headers: { "Content-Type": "multipart/form-data" },
+    headers: { "Content-Type": "application/json" },
   })
     .then((res) => res)
     .catch((error) => error);

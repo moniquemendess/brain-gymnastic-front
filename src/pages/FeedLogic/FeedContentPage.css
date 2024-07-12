@@ -11,6 +11,7 @@
 
 .feedIntro {
   background-color: #122e3d;
+  backdrop-filter: blur(30px);
   border-radius: 30px;
   margin: 3rem;
   padding: 0 3rem 0 3rem;
