@@ -1,3 +1,4 @@
+import "./FeedFigure.css";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 
@@ -7,7 +8,6 @@ import { Link } from "react-router-dom";
  */
 
 export const FeedFigure = ({ feed }) => {
-  console.log("esto es un feed", feed.owner);
   const navigate = useNavigate();
 
   // Formación de la data criación del feed
@@ -22,7 +22,7 @@ export const FeedFigure = ({ feed }) => {
         className="section-consumer__image"
         style={{ backgroundImage: `url(${feed?.image})` }}
       ></div>
-      <div className="section-feed">
+      <div className="section-feed__text">
         <h2 className="feedTitle">{feed?.title}</h2>
         <p className="feedCreation">{formattedDate}</p>
         <p className="feedContent">{feed?.content}</p>

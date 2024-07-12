@@ -2,17 +2,18 @@ import "./FeedContentPage.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 
-import { getAllFeedLogic } from "../../services/feedLogic.service";
+import { getAllFeedLogic } from "../../services/feedLogic.service"; // Función para obtener los feeds
 import { useAuth } from "../../context/auth.context";
 import { TopBar } from "../../layout/TopBar";
 import { FeedFigure } from "../../components/FeedLogic/FeedFigure"; //Componente que muestra un feed individual
 
 export const FeedContentPage = () => {
   const navigate = useNavigate();
-  const { user, logout } = useAuth();
+  const { user, logout } = useAuth(); // Obtiene el usuario actual y la función de logout del contexto de autenticación
 
   const [feedList, setFeedList] = useState(); // Estado para almacenar la lista de feeds
 
+  // Función obtener los feeds desde el servicio externo
   const fetchFeeds = async () => {
     const feeds = await getAllFeedLogic();
     setFeedList(feeds); // Actualiza el estado con los feeds obtenidos
@@ -32,11 +33,15 @@ export const FeedContentPage = () => {
             Enter the mind game: post, solve, challenge. Your next great
             discovery starts here
           </h2>
-          <div className="icon">
-            <img src={user.image} alt={user.user} />
-            <input placeholder="New post" onClick={() => navigate("/feed")} />
+          <div className="Start-a-post">
+            <img className="icon" src={user.image} alt={user.user} />
+            <input
+              placeholder="New post"
+              onClick={() => navigate("/createfeed")}
+            />
           </div>
         </div>
+
         <section className="Feed-Page-grid">
           {feedList &&
             feedList.data &&
