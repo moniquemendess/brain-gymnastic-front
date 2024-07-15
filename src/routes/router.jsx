@@ -4,6 +4,7 @@ import { createBrowserRouter } from "react-router-dom";
 import { FeedFigure, LoginForm, RegisterForm } from "../components";
 import { FeedContentPage } from "../pages";
 import { CreateFeed } from "../pages/FeedLogic/CreateFeed";
+import { FeedDetail } from "../pages/FeedLogic/FeedDetail";
 
 export const router = createBrowserRouter([
   {
@@ -28,7 +29,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/feedDetail/:id",
-        element: <FeedFigure />,
+        element: <FeedDetail />,
       },
     ],
   },
