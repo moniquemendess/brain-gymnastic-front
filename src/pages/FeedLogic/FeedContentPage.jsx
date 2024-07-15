@@ -34,9 +34,9 @@ export const FeedContentPage = () => {
             discovery starts here
           </h2>
           <div className="Start-a-post">
-            <img className="icon" src={user.image} alt={user.user} />
+            {/* <img className="icon" src={user.image} alt={user.user} /> */}
             <input
-              placeholder="New post"
+              placeholder="New Post"
               onClick={() => navigate("/createfeed")}
             />
           </div>

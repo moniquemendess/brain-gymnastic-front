@@ -17,21 +17,30 @@ export const CreateFeed = () => {
 
   // función que se encarga del formulario
   const formSubmit = async (formData) => {
+    console.log("Form Data:", formData);
     const inputfile = document.getElementById("file-upload").files;
+    console.log("Input File:", inputfile);
+
     const customFormData = {
       ...formData,
+
       image: inputfile.length ? inputfile[0] : undefined,
       owner: user,
     };
+
+    console.log("Custom Form Data:", customFormData);
+
     setSend(true);
-    setRes(await createFeedLogic(customFormData));
+    try {
+      const response = await createFeedLogic(customFormData);
+      console.log("Create Feed Logic Response:", response);
+      setRes(response);
+      setOkForum(true); // Assuming this should be true on successful creation
+    } catch (error) {
+      console.error("Error creating feed:", error);
+    }
     setSend(false);
   };
-
-  // useEffect / custom hook. Manejo de respuestas
-  useEffect(() => {
-    useFeedLogicError(res, setRes, setOkForum);
-  }, [res]);
 
   // estados de navegación
   if (okForum) {

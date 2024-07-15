@@ -2,15 +2,16 @@ import "./LoginForm.css";
 import { useState } from "react";
 import { login } from "../../services/User.service";
 import { FaUser, FaLock } from "react-icons/fa";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const LoginForm = () => {
+  const navigate = useNavigate();
+
   const [datos, setDatos] = useState({
     email: "",
     password: "",
   });
   const [loginResponse, setLoginResponse] = useState(null);
-  const [loginOk, setLoginOk] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -20,25 +21,23 @@ export const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!e.target.checkValidity()) {
-      console.log("no enviar");
+      console.log("Formulário inválido");
       return;
     }
     try {
       const res = await login(datos);
-      console.log(res);
-      setLoginResponse(res);
+      console.log("Resposta do servidor:", res);
+
       if (res.data?.user?.check === true) {
-        setLoginOk(true);
+        console.log("Login bem-sucedido! Redirecionando para /contentPage");
+        navigate("/contentPage");
+      } else {
+        console.log("Login falhou: Usuário não verificado");
       }
     } catch (error) {
       console.error("Erro ao fazer login:", error);
-      setLoginResponse({ data: { user: { check: false } } });
     }
   };
-
-  if (loginOk) {
-    return <Navigate to="/content" />;
-  }
 
   return (
     <div className="wrapper">

@@ -25,7 +25,7 @@ export const FeedFigure = ({ feed }) => {
       <div className="section-feed__text">
         <h2 className="feedTitle">{feed?.title}</h2>
         <p className="feedCreation">{formattedDate}</p>
-        <p className="feedContent">{feed?.content}</p>
+        <h3 className="feedContent">{feed?.content}</h3>
 
         <button
           className="button--blue"
@@ -33,10 +33,10 @@ export const FeedFigure = ({ feed }) => {
             navigate(`/feedDetail/${feed?._id}`);
           }}
         >
-          Enter Feed
+          See more ...
         </button>
 
-        <div className="containerFeedOwner">
+        {/* <div className="containerFeedOwner">
           <Link to={`/profileDetail/${feed?.owner?._id}`}>
             <img
               className="imgOwnerFeed"
@@ -47,7 +47,7 @@ export const FeedFigure = ({ feed }) => {
               {feed?.owner?.userName} {}
             </h5>
           </Link>
-        </div>
+        </div> */}
       </div>
     </div>
   );
