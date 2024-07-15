@@ -1,0 +1,22 @@
+.scrollToTopButton {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 15px 20px;
+  font-size: 18px;
+  background-color: var(--primary-color-green);
+  color: #fff;
+  border: none;
+  border-radius: 50%; /* Define um valor de 50% para tornar o botão redondo */
+  cursor: pointer;
+}
+
+.scrollToTopButton:hover {
+  background-color: #15b300;
+}
+
+@media (max-width: 400px) {
+  .scrollToTopButton {
+    padding: 9px 11px;
+  }
+}
