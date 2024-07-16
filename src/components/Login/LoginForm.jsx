@@ -3,39 +3,47 @@ import { useState } from "react";
 import { login } from "../../services/User.service";
 import { FaUser, FaLock } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/auth.context";
 
 export const LoginForm = () => {
   const navigate = useNavigate();
+  const { setUser } = useAuth();
 
-  const [datos, setDatos] = useState({
+  const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
-  const [loginResponse, setLoginResponse] = useState(null);
+
+  const [error, setError] = useState("");
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setDatos({ ...datos, [name]: value });
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!e.target.checkValidity()) {
-      console.log("Formulário inválido");
-      return;
-    }
-    try {
-      const res = await login(datos);
-      console.log("Resposta do servidor:", res);
 
-      if (res.data?.user?.check === true) {
-        console.log("Login bem-sucedido! Redirecionando para /contentPage");
+    try {
+      const data = await login(formData);
+
+      if (data.token) {
+        console.log("welcome to Brain Gynmastic");
+
+        // Armazenar token no localStorage para persistência entre sessões
+        localStorage.setItem("token", data.token);
+
+        // Atualizar o estado do usuário no contexto de autenticação
+        setUser({ token: data.token });
+
+        // Redirecionar usuário para a página de conteúdo
         navigate("/contentPage");
       } else {
-        console.log("Login falhou: Usuário não verificado");
+        setError("Login falhou: Usuário não verificado");
+        console.log("Resposta completa:", data);
       }
     } catch (error) {
-      console.error("Erro ao fazer login:", error);
+      setError("Erro ao fazer login: Verifique suas credenciais.");
     }
   };
 
@@ -47,24 +55,27 @@ export const LoginForm = () => {
           <input
             type="email"
             name="email"
+            value={formData.email}
             onChange={handleInputChange}
-            value={datos.email}
             placeholder="E-mail"
             required
           />
+
           <FaUser className="icon" />
         </div>
         <div className="input-box">
           <input
             type="password"
             name="password"
+            value={formData.password}
             onChange={handleInputChange}
-            value={datos.password}
             placeholder="Password"
             required
           />
           <FaLock className="icon" />
         </div>
+        {error && <div className="error-message">{error}</div>}
+
         <div className="remember-forgot">
           <label>
             <input type="checkbox" />

@@ -9,7 +9,7 @@ export const FeedDetail = () => {
   console.log("hola", id);
   const { user, setUser } = useAuth();
   console.log("sou", user);
-  const [fullFeed, setFullFeed] = useState();
+  const [fullFeed, setFullFeed] = useState(null);
   const [send, setSend] = useState(false);
 
   useEffect(() => {
@@ -31,8 +31,11 @@ export const FeedDetail = () => {
       }
     };
 
-    fetchFullFeed(); // Chamada da função dentro do useEffect
+    if (id) {
+      fetchFullFeed(); // Chamada da função dentro do useEffect
+    }
   }, [id]); //
+
   return (
     <div className="FeedDetail-container">
       <div>
