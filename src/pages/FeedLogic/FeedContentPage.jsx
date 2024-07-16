@@ -6,6 +6,8 @@ import { getAllFeedLogic } from "../../services/feedLogic.service"; // Función 
 import { useAuth } from "../../context/auth.context";
 import { TopBar } from "../../layout/TopBar";
 import { FeedFigure } from "../../components/FeedLogic/FeedFigure"; //Componente que muestra un feed individual
+import { DarkModeToggle } from "../../components/DarkModeToggle/DarkModeToggle";
+import { ScrollToTopButton } from "../../components/ScrollToTopButton/ScrollToTopButton";
 
 export const FeedContentPage = () => {
   const navigate = useNavigate();
@@ -26,6 +28,8 @@ export const FeedContentPage = () => {
 
   return (
     <>
+      <DarkModeToggle />
+      <ScrollToTopButton />
       <TopBar pageTitle="Welcome to Brain Gymnastic "></TopBar>
       <div className="feedContainer">
         <div className="feedIntro">
@@ -34,9 +38,9 @@ export const FeedContentPage = () => {
             discovery starts here
           </h2>
           <div className="Start-a-post">
-            <img className="icon" src={user.image} alt={user.user} />
+            {/* <img className="icon" src={user.image} alt={user.user} /> */}
             <input
-              placeholder="New post"
+              placeholder="New Post"
               onClick={() => navigate("/createfeed")}
             />
           </div>

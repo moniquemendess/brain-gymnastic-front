@@ -43,13 +43,15 @@ export const AuthContextProvider = ({ children }) => {
   };
 
   const login = (data) => {
-    localStorage.setItem("user", data);
-    const parseUser = JSON.parse(data);
+    localStorage.setItem("user", JSON.stringify(data));
+    const parseUser = JSON.parse(localStorage.getItem("user"));
+    console.log("Logged in user:", parseUser);
     setUser(parseUser);
   };
 
   const logout = () => {
     localStorage.removeItem("user");
+    console.log("User logged out");
     setUser(null);
   };
 

@@ -20,11 +20,14 @@ export const RegisterUser = async (formData) => {
 export const login = async (formData) => {
   const ApiGeneral = extraConfig();
 
-  return ApiGeneral.post(`/users/login`, formData, {
-    headers: { "Content-Type": "application/json" },
-  })
-    .then((res) => res)
-    .catch((error) => error);
+  try {
+    const response = await ApiGeneral.post(`/users/login`, formData, {
+      headers: { "Content-Type": "application/json" },
+    });
+    return response.data;
+  } catch (error) {
+    throw error.response.data;
+  }
 };
 
 /***************************************************************************************************** */

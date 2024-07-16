@@ -9,7 +9,6 @@ export const FeedFigureDetail = ({ feedData }) => {
 
   return (
     <div className="FeedFigureDetail-Container">
-      <h1>{feedData.title}</h1>
       <img src={feedData.image} alt={feedData.title} />
 
       <Link to={`/profileDetail/${feedData?.owner?._id}`}>
